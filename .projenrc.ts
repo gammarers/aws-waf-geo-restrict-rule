@@ -8,7 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: 'This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/yicr/aws-waf-geo-restriction-rule-group.git',
-  releaseToNpm: true,
+  npmAccess: javascript.NpmAccess.PUBLIC,
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
