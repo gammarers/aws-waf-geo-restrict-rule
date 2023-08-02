@@ -4,7 +4,7 @@ import { Construct } from 'constructs';
 export interface WafGeoRestrictRuleGroupProps {
   readonly name?: string;
   readonly scope: Scope;
-  readonly countryCodes: string[];
+  readonly allowCountries: string[];
   //readonly rateLimitCount?: number;
   //whitelist
 }
@@ -28,16 +28,27 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
         }
       })(),
       capacity: 10,
-      customResponseBodies: {
-        ['geo-restrict']: {
-          contentType: 'TEXT_PLAIN',
-          content: 'Sorry, You Are Not Allowed to Access This Service.',
-        },
-      },
       rules: [
         {
-          priority: 10,
-          name: 'geo-restrict-rule',
+          priority: 0,
+          name: 'allow-geo-rule',
+          action: {
+            allow: {},
+          },
+          visibilityConfig: {
+            cloudWatchMetricsEnabled: true,
+            sampledRequestsEnabled: true,
+            metricName: 'AllowGeoRule',
+          },
+          statement: {
+            geoMatchStatement: {
+              countryCodes: props.allowCountries,
+            },
+          },
+        },
+        {
+          priority: 1,
+          name: 'deny-geo-rule',
           action: {
             block: {
               CustomResponse: {
@@ -49,15 +60,25 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
           visibilityConfig: {
             cloudWatchMetricsEnabled: true,
             sampledRequestsEnabled: true,
-            metricName: 'WafGeoRestrictRule',
+            metricName: 'DenyGeoRule',
           },
           statement: {
-            geoMatchStatement: {
-              countryCodes: props.countryCodes,
+            notStatement: {
+              statement: {
+                geoMatchStatement: {
+                  countryCodes: props.allowCountries,
+                },
+              },
             },
           },
         },
       ],
+      customResponseBodies: {
+        ['geo-restrict']: {
+          contentType: 'TEXT_PLAIN',
+          content: 'Sorry, You Are Not Allowed to Access This Service.',
+        },
+      },
       visibilityConfig: {
         cloudWatchMetricsEnabled: true,
         sampledRequestsEnabled: true,

@@ -25,7 +25,7 @@ import { WafGeoRestrictRuleGroup } from '@gammarer/aws-waf-geo-restriction-rule-
 
 new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
   scope: Scope.GLOBAL, // GLOBAL(CloudFront) or REIGONAL(Application Load Balancer (ALB), Amazon API Gateway REST API, an AWS AppSync GraphQL API, or an Amazon Cognito user pool)
-  countryCodes: ['JP'], // alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard
+  allowCountries: ['JP'], // alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard
 });
 
 ```
@@ -895,16 +895,16 @@ const wafGeoRestrictRuleGroupProps: WafGeoRestrictRuleGroupProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.countryCodes">countryCodes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowCountries">allowCountries</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.scope">scope</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.Scope">Scope</a></code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.name">name</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `countryCodes`<sup>Required</sup> <a name="countryCodes" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.countryCodes"></a>
+##### `allowCountries`<sup>Required</sup> <a name="allowCountries" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowCountries"></a>
 
 ```typescript
-public readonly countryCodes: string[];
+public readonly allowCountries: string[];
 ```
 
 - *Type:* string[]

@@ -17,7 +17,7 @@ describe('Web ACL Rule Group default testing', () => {
 
     const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
       scope: Scope.GLOBAL,
-      countryCodes: ['JP'],
+      allowCountries: ['JP'],
     });
 
     it('Is Waf RuleGroup', () => {
@@ -37,10 +37,27 @@ describe('Web ACL Rule Group default testing', () => {
             ContentType: 'TEXT_PLAIN',
           },
         },
-        Rules: [
+        Rules: Match.arrayWith([
           {
-            Priority: 10,
-            Name: 'geo-restrict-rule',
+            Priority: 0,
+            Name: 'allow-geo-rule',
+            Action: {
+              Allow: {},
+            },
+            VisibilityConfig: {
+              CloudWatchMetricsEnabled: true,
+              MetricName: 'AllowGeoRule',
+              SampledRequestsEnabled: true,
+            },
+            Statement: {
+              GeoMatchStatement: {
+                CountryCodes: ['JP'],
+              },
+            },
+          },
+          {
+            Priority: 1,
+            Name: 'deny-geo-rule',
             Action: {
               Block: {
                 CustomResponse: {
@@ -51,16 +68,20 @@ describe('Web ACL Rule Group default testing', () => {
             },
             VisibilityConfig: {
               CloudWatchMetricsEnabled: true,
-              MetricName: 'WafGeoRestrictRule',
+              MetricName: 'DenyGeoRule',
               SampledRequestsEnabled: true,
             },
             Statement: {
-              GeoMatchStatement: {
-                CountryCodes: ['JP'],
+              NotStatement: {
+                Statement: {
+                  GeoMatchStatement: {
+                    CountryCodes: ['JP'],
+                  },
+                },
               },
             },
           },
-        ],
+        ]),
         VisibilityConfig: {
           CloudWatchMetricsEnabled: true,
           MetricName: 'GeoRestrictRule',
@@ -88,7 +109,7 @@ describe('Web ACL Rule Group default testing', () => {
     const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
       name: 'example-waf-geo-restrict-rule-group',
       scope: Scope.REGIONAL,
-      countryCodes: ['JP'],
+      allowCountries: ['JP'],
     });
 
     it('Is Waf RuleGroup', () => {
@@ -109,10 +130,27 @@ describe('Web ACL Rule Group default testing', () => {
             ContentType: 'TEXT_PLAIN',
           },
         },
-        Rules: [
+        Rules: Match.arrayWith([
           {
-            Priority: 10,
-            Name: 'geo-restrict-rule',
+            Priority: 0,
+            Name: 'allow-geo-rule',
+            Action: {
+              Allow: {},
+            },
+            VisibilityConfig: {
+              CloudWatchMetricsEnabled: true,
+              MetricName: 'AllowGeoRule',
+              SampledRequestsEnabled: true,
+            },
+            Statement: {
+              GeoMatchStatement: {
+                CountryCodes: ['JP'],
+              },
+            },
+          },
+          {
+            Priority: 1,
+            Name: 'deny-geo-rule',
             Action: {
               Block: {
                 CustomResponse: {
@@ -123,16 +161,20 @@ describe('Web ACL Rule Group default testing', () => {
             },
             VisibilityConfig: {
               CloudWatchMetricsEnabled: true,
-              MetricName: 'WafGeoRestrictRule',
+              MetricName: 'DenyGeoRule',
               SampledRequestsEnabled: true,
             },
             Statement: {
-              GeoMatchStatement: {
-                CountryCodes: ['JP'],
+              NotStatement: {
+                Statement: {
+                  GeoMatchStatement: {
+                    CountryCodes: ['JP'],
+                  },
+                },
               },
             },
           },
-        ],
+        ]),
         VisibilityConfig: {
           CloudWatchMetricsEnabled: true,
           MetricName: 'GeoRestrictRule',

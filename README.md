@@ -25,7 +25,7 @@ import { WafGeoRestrictRuleGroup } from '@gammarer/aws-waf-geo-restriction-rule-
 
 new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
   scope: Scope.GLOBAL, // GLOBAL(CloudFront) or REIGONAL(Application Load Balancer (ALB), Amazon API Gateway REST API, an AWS AppSync GraphQL API, or an Amazon Cognito user pool)
-  countryCodes: ['JP'], // alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard
+  allowCountries: ['JP'], // alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard
 });
 
 ```
