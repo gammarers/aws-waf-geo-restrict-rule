@@ -23,15 +23,10 @@ Object {
         "Rules": Array [
           Object {
             "Action": Object {
-              "Block": Object {
-                "CustomResponse": Object {
-                  "CustomResponseBodyKey": "geo-restrict",
-                  "ResponseCode": 403,
-                },
-              },
+              "Allow": Object {},
             },
-            "Name": "geo-restrict-rule",
-            "Priority": 10,
+            "Name": "allow-geo-rule",
+            "Priority": 0,
             "Statement": Object {
               "GeoMatchStatement": Object {
                 "CountryCodes": Array [
@@ -41,7 +36,35 @@ Object {
             },
             "VisibilityConfig": Object {
               "CloudWatchMetricsEnabled": true,
-              "MetricName": "WafGeoRestrictRule",
+              "MetricName": "AllowGeoRule",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          Object {
+            "Action": Object {
+              "Block": Object {
+                "CustomResponse": Object {
+                  "CustomResponseBodyKey": "geo-restrict",
+                  "ResponseCode": 403,
+                },
+              },
+            },
+            "Name": "deny-geo-rule",
+            "Priority": 1,
+            "Statement": Object {
+              "NotStatement": Object {
+                "Statement": Object {
+                  "GeoMatchStatement": Object {
+                    "CountryCodes": Array [
+                      "JP",
+                    ],
+                  },
+                },
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "DenyGeoRule",
               "SampledRequestsEnabled": true,
             },
           },
@@ -110,15 +133,10 @@ Object {
         "Rules": Array [
           Object {
             "Action": Object {
-              "Block": Object {
-                "CustomResponse": Object {
-                  "CustomResponseBodyKey": "geo-restrict",
-                  "ResponseCode": 403,
-                },
-              },
+              "Allow": Object {},
             },
-            "Name": "geo-restrict-rule",
-            "Priority": 10,
+            "Name": "allow-geo-rule",
+            "Priority": 0,
             "Statement": Object {
               "GeoMatchStatement": Object {
                 "CountryCodes": Array [
@@ -128,7 +146,35 @@ Object {
             },
             "VisibilityConfig": Object {
               "CloudWatchMetricsEnabled": true,
-              "MetricName": "WafGeoRestrictRule",
+              "MetricName": "AllowGeoRule",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          Object {
+            "Action": Object {
+              "Block": Object {
+                "CustomResponse": Object {
+                  "CustomResponseBodyKey": "geo-restrict",
+                  "ResponseCode": 403,
+                },
+              },
+            },
+            "Name": "deny-geo-rule",
+            "Priority": 1,
+            "Statement": Object {
+              "NotStatement": Object {
+                "Statement": Object {
+                  "GeoMatchStatement": Object {
+                    "CountryCodes": Array [
+                      "JP",
+                    ],
+                  },
+                },
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "DenyGeoRule",
               "SampledRequestsEnabled": true,
             },
           },
