@@ -4,7 +4,7 @@ import { Construct } from 'constructs';
 export interface WafGeoRestrictRuleGroupProps {
   readonly name?: string;
   readonly scope: Scope;
-  readonly countryCodes: string[];
+  readonly allowCountries: string[];
   //readonly rateLimitCount?: number;
   //whitelist
 }
@@ -42,7 +42,7 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
           },
           statement: {
             geoMatchStatement: {
-              countryCodes: props.countryCodes,
+              countryCodes: props.allowCountries,
             },
           },
         },
@@ -66,7 +66,7 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
             notStatement: {
               statement: {
                 geoMatchStatement: {
-                  countryCodes: props.countryCodes,
+                  countryCodes: props.allowCountries,
                 },
               },
             },

@@ -17,7 +17,7 @@ describe('Web ACL Rule Group default testing', () => {
 
     const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
       scope: Scope.GLOBAL,
-      countryCodes: ['JP'],
+      allowCountries: ['JP'],
     });
 
     it('Is Waf RuleGroup', () => {
@@ -109,7 +109,7 @@ describe('Web ACL Rule Group default testing', () => {
     const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
       name: 'example-waf-geo-restrict-rule-group',
       scope: Scope.REGIONAL,
-      countryCodes: ['JP'],
+      allowCountries: ['JP'],
     });
 
     it('Is Waf RuleGroup', () => {
