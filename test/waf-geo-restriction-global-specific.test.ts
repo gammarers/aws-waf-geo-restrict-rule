@@ -38,6 +38,14 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
           Content: 'Sorry, You Are Not Allowed to Access This Service.',
           ContentType: 'TEXT_PLAIN',
         },
+        'ip-restrict': {
+          Content: 'Sorry, You Are Not Allowed to Access This Service.',
+          ContentType: 'TEXT_PLAIN',
+        },
+        'sample-restrict': {
+          Content: 'Sorry, You Are Not Allowed to Access This Service.',
+          ContentType: 'TEXT_PLAIN',
+        },
       },
       Rules: Match.arrayEquals([
         {
