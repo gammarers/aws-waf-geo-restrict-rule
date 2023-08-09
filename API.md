@@ -881,6 +881,45 @@ The CloudFormation resource type name for this resource class.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### IpRateLimitingProperty <a name="IpRateLimitingProperty" id="@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty"></a>
+
+#### Initializer <a name="Initializer" id="@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty.Initializer"></a>
+
+```typescript
+import { IpRateLimitingProperty } from '@gammarer/aws-waf-geo-restriction-rule-group'
+
+const ipRateLimitingProperty: IpRateLimitingProperty = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty.property.count">count</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty.property.enable">enable</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `count`<sup>Required</sup> <a name="count" id="@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+##### `enable`<sup>Required</sup> <a name="enable" id="@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty.property.enable"></a>
+
+```typescript
+public readonly enable: boolean;
+```
+
+- *Type:* boolean
+
+---
+
 ### WafGeoRestrictRuleGroupProps <a name="WafGeoRestrictRuleGroupProps" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps"></a>
 
 #### Initializer <a name="Initializer" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.Initializer"></a>
@@ -897,6 +936,7 @@ const wafGeoRestrictRuleGroupProps: WafGeoRestrictRuleGroupProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowCountries">allowCountries</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.scope">scope</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.Scope">Scope</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.ipRateLimiting">ipRateLimiting</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty">IpRateLimitingProperty</a></code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.name">name</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -918,6 +958,16 @@ public readonly scope: Scope;
 ```
 
 - *Type:* <a href="#@gammarer/aws-waf-geo-restriction-rule-group.Scope">Scope</a>
+
+---
+
+##### `ipRateLimiting`<sup>Optional</sup> <a name="ipRateLimiting" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.ipRateLimiting"></a>
+
+```typescript
+public readonly ipRateLimiting: IpRateLimitingProperty;
+```
+
+- *Type:* <a href="#@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty">IpRateLimitingProperty</a>
 
 ---
 
