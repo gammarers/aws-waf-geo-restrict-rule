@@ -34,7 +34,7 @@ Object {
               "Allow": Object {},
             },
             "Name": "allow-geo-rule",
-            "Priority": 0,
+            "Priority": 4,
             "Statement": Object {
               "GeoMatchStatement": Object {
                 "CountryCodes": Array [
