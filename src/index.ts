@@ -37,7 +37,7 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
       rules: ((): Array<waf.CfnRuleGroup.RuleProperty> => {
         const defaults: Array<waf.CfnRuleGroup.RuleProperty> = [
           {
-            priority: 0,
+            priority: 4,
             name: 'allow-geo-rule',
             action: {
               allow: {},
