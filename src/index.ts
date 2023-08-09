@@ -5,8 +5,14 @@ export interface WafGeoRestrictRuleGroupProps {
   readonly name?: string;
   readonly scope: Scope;
   readonly allowCountries: string[];
+  readonly ipRateLimiting?: IpRateLimitingProperty;
   //readonly rateLimitCount?: number;
   //whitelist
+}
+
+export interface IpRateLimitingProperty {
+  readonly enable: boolean;
+  readonly count: number;
 }
 
 export enum Scope {
@@ -28,51 +34,86 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
         }
       })(),
       capacity: 10,
-      rules: [
-        {
-          priority: 0,
-          name: 'allow-geo-rule',
-          action: {
-            allow: {},
-          },
-          visibilityConfig: {
-            cloudWatchMetricsEnabled: true,
-            sampledRequestsEnabled: true,
-            metricName: 'AllowGeoRule',
-          },
-          statement: {
-            geoMatchStatement: {
-              countryCodes: props.allowCountries,
+      rules: ((): Array<waf.CfnRuleGroup.RuleProperty> => {
+        const defaults: Array<waf.CfnRuleGroup.RuleProperty> = [
+          {
+            priority: 0,
+            name: 'allow-geo-rule',
+            action: {
+              allow: {},
             },
-          },
-        },
-        {
-          priority: 1,
-          name: 'deny-geo-rule',
-          action: {
-            block: {
-              CustomResponse: {
-                CustomResponseBodyKey: 'geo-restrict',
-                ResponseCode: 403,
+            visibilityConfig: {
+              cloudWatchMetricsEnabled: true,
+              sampledRequestsEnabled: true,
+              metricName: 'AllowGeoRule',
+            },
+            statement: {
+              geoMatchStatement: {
+                countryCodes: props.allowCountries,
               },
             },
           },
-          visibilityConfig: {
-            cloudWatchMetricsEnabled: true,
-            sampledRequestsEnabled: true,
-            metricName: 'DenyGeoRule',
-          },
-          statement: {
-            notStatement: {
-              statement: {
-                geoMatchStatement: {
-                  countryCodes: props.allowCountries,
+          {
+            priority: 5,
+            name: 'deny-geo-rule',
+            action: {
+              block: {
+                CustomResponse: {
+                  CustomResponseBodyKey: 'geo-restrict',
+                  ResponseCode: 403,
+                },
+              },
+            },
+            visibilityConfig: {
+              cloudWatchMetricsEnabled: true,
+              sampledRequestsEnabled: true,
+              metricName: 'DenyGeoRule',
+            },
+            statement: {
+              notStatement: {
+                statement: {
+                  geoMatchStatement: {
+                    countryCodes: props.allowCountries,
+                  },
                 },
               },
             },
           },
-        },
-      ],
+        ];
+        if (props.ipRateLimiting) {
+          if (props.ipRateLimiting.enable) {
+            if (props.ipRateLimiting.count < 100) {
+              throw new Error('IP rate limiting count value needs to be above 100');
+            } else {
+              const rule: waf.CfnRuleGroup.RuleProperty = {
+                priority: 2,
+                name: 'ip-rate-limiting-rule',
+                action: {
+                  block: {
+                    CustomResponse: {
+                      CustomResponseBodyKey: 'ip-restrict',
+                      ResponseCode: 403,
+                    },
+                  },
+                },
+                visibilityConfig: {
+                  cloudWatchMetricsEnabled: true,
+                  sampledRequestsEnabled: true,
+                  metricName: 'DenyIpLimitingRule',
+                },
+                statement: {
+                  rateBasedStatement: {
+                    aggregateKeyType: 'IP',
+                    limit: props?.ipRateLimiting.count,
+                  },
+                },
+              };
+              defaults.push(rule);
+            }
+          }
+        }
+        return defaults;
+      })(),
       customResponseBodies: {
         ['geo-restrict']: {
           contentType: 'TEXT_PLAIN',

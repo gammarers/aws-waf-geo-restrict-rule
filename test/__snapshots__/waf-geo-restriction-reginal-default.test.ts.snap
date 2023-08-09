@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Web ACL Rule Group Regional Scope default testing Should match snapshot: regional 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "WafGeoRestrictRuleGroup": Object {
+      "Properties": Object {
+        "Capacity": 10,
+        "CustomResponseBodies": Object {
+          "geo-restrict": Object {
+            "Content": "Sorry, You Are Not Allowed to Access This Service.",
+            "ContentType": "TEXT_PLAIN",
+          },
+        },
+        "Description": "geo restrict rule group",
+        "Name": "example-waf-geo-restrict-rule-group",
+        "Rules": Array [
+          Object {
+            "Action": Object {
+              "Allow": Object {},
+            },
+            "Name": "allow-geo-rule",
+            "Priority": 0,
+            "Statement": Object {
+              "GeoMatchStatement": Object {
+                "CountryCodes": Array [
+                  "JP",
+                ],
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "AllowGeoRule",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          Object {
+            "Action": Object {
+              "Block": Object {
+                "CustomResponse": Object {
+                  "CustomResponseBodyKey": "geo-restrict",
+                  "ResponseCode": 403,
+                },
+              },
+            },
+            "Name": "deny-geo-rule",
+            "Priority": 5,
+            "Statement": Object {
+              "NotStatement": Object {
+                "Statement": Object {
+                  "GeoMatchStatement": Object {
+                    "CountryCodes": Array [
+                      "JP",
+                    ],
+                  },
+                },
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "DenyGeoRule",
+              "SampledRequestsEnabled": true,
+            },
+          },
+        ],
+        "Scope": "REGIONAL",
+        "VisibilityConfig": Object {
+          "CloudWatchMetricsEnabled": true,
+          "MetricName": "GeoRestrictRule",
+          "SampledRequestsEnabled": true,
+        },
+      },
+      "Type": "AWS::WAFv2::RuleGroup",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
