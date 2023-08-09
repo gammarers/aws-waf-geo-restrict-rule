@@ -3,7 +3,7 @@ import { Match, Template } from 'aws-cdk-lib/assertions';
 import * as waf from 'aws-cdk-lib/aws-wafv2';
 import { Scope, WafGeoRestrictRuleGroup } from '../src';
 
-describe('Web ACL Rule Group Global Scope default testing', () => {
+describe('Web ACL Rule Group Global Scope specific testing', () => {
 
   const app = new App();
   const stack = new Stack(app, 'TestingStack', {
@@ -16,6 +16,10 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
   const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
     scope: Scope.GLOBAL,
     allowCountries: ['JP'],
+    ipRateLimiting: {
+      enable: true,
+      count: 1000,
+    },
   });
 
   it('Is Waf RuleGroup', () => {
@@ -77,6 +81,29 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
                 },
               },
             },
+          },
+        },
+        {
+          Priority: 2,
+          Name: 'ip-rate-limiting-rule',
+          Action: {
+            Block: {
+              CustomResponse: {
+                CustomResponseBodyKey: 'ip-restrict',
+                ResponseCode: 403,
+              },
+            },
+          },
+          Statement: {
+            RateBasedStatement: {
+              AggregateKeyType: 'IP',
+              Limit: 1000,
+            },
+          },
+          VisibilityConfig: {
+            CloudWatchMetricsEnabled: true,
+            MetricName: 'DenyIpLimitingRule',
+            SampledRequestsEnabled: true,
           },
         },
       ]),

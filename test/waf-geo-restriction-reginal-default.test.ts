@@ -3,7 +3,7 @@ import { Match, Template } from 'aws-cdk-lib/assertions';
 import * as waf from 'aws-cdk-lib/aws-wafv2';
 import { Scope, WafGeoRestrictRuleGroup } from '../src';
 
-describe('Web ACL Rule Group Global Scope default testing', () => {
+describe('Web ACL Rule Group Regional Scope default testing', () => {
 
   const app = new App();
   const stack = new Stack(app, 'TestingStack', {
@@ -14,7 +14,8 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
   });
 
   const ruleGroup = new WafGeoRestrictRuleGroup(stack, 'WafGeoRestrictRuleGroup', {
-    scope: Scope.GLOBAL,
+    name: 'example-waf-geo-restrict-rule-group',
+    scope: Scope.REGIONAL,
     allowCountries: ['JP'],
   });
 
@@ -26,8 +27,9 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
 
   it('Should have WAF Rule Group', () => {
     template.hasResourceProperties('AWS::WAFv2::RuleGroup', Match.objectEquals({
+      Name: 'example-waf-geo-restrict-rule-group',
       Description: 'geo restrict rule group',
-      Scope: 'CLOUDFRONT',
+      Scope: 'REGIONAL',
       Capacity: 10,
       CustomResponseBodies: {
         'geo-restrict': {
@@ -89,7 +91,7 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
   });
 
   it('Should match snapshot', () => {
-    expect(template.toJSON()).toMatchSnapshot();
+    expect(template.toJSON()).toMatchSnapshot('regional');
   });
 
 });
