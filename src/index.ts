@@ -119,6 +119,14 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
           contentType: 'TEXT_PLAIN',
           content: 'Sorry, You Are Not Allowed to Access This Service.',
         },
+        ['ip-restrict']: {
+          contentType: 'TEXT_PLAIN',
+          content: 'Sorry, You Are Not Allowed to Access This Service.',
+        },
+        ['sample-restrict']: {
+          contentType: 'TEXT_PLAIN',
+          content: 'Sorry, You Are Not Allowed to Access This Service.',
+        },
       },
       visibilityConfig: {
         cloudWatchMetricsEnabled: true,

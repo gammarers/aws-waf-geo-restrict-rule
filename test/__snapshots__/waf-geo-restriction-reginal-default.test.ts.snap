@@ -18,6 +18,14 @@ Object {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
+          "ip-restrict": Object {
+            "Content": "Sorry, You Are Not Allowed to Access This Service.",
+            "ContentType": "TEXT_PLAIN",
+          },
+          "sample-restrict": Object {
+            "Content": "Sorry, You Are Not Allowed to Access This Service.",
+            "ContentType": "TEXT_PLAIN",
+          },
         },
         "Description": "geo restrict rule group",
         "Name": "example-waf-geo-restrict-rule-group",
