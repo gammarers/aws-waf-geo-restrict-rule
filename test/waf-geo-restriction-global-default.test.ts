@@ -56,7 +56,7 @@ describe('Web ACL Rule Group default testing', () => {
             },
           },
           {
-            Priority: 1,
+            Priority: 5,
             Name: 'deny-geo-rule',
             Action: {
               Block: {
@@ -149,7 +149,7 @@ describe('Web ACL Rule Group default testing', () => {
             },
           },
           {
-            Priority: 1,
+            Priority: 5,
             Name: 'deny-geo-rule',
             Action: {
               Block: {

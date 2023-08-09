@@ -3,6 +3,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'yicr',
   authorAddress: 'yicr@users.noreply.github.com',
   cdkVersion: '2.62.0',
+  typescriptVersion: '5.1.x',
   defaultReleaseBranch: 'main',
   name: '@gammarer/aws-waf-geo-restriction-rule-group',
   description: 'This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2',
