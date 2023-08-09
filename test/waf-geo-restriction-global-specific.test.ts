@@ -49,7 +49,7 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
       },
       Rules: Match.arrayEquals([
         {
-          Priority: 0,
+          Priority: 4,
           Name: 'allow-geo-rule',
           Action: {
             Allow: {},
