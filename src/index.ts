@@ -112,7 +112,6 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
           }
         }
         if (props.allowIpSetArn) {
-          // todo: priority:0 rule
           const rule: waf.CfnRuleGroup.RuleProperty = {
             priority: 0,
             name: 'allow-ip-set-rule',
