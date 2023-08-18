@@ -20,6 +20,7 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
       enable: true,
       count: 1000,
     },
+    allowIpSetArn: 'arn:aws:wafv2:us-east-1:1111222233334444:global/ipset/ipv4-block-cf/1fef3860-8b6e-4201-8a56-6d8d49e93057',
   });
 
   it('Is Waf RuleGroup', () => {
@@ -111,6 +112,21 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
           VisibilityConfig: {
             CloudWatchMetricsEnabled: true,
             MetricName: 'DenyIpLimitingRule',
+            SampledRequestsEnabled: true,
+          },
+        },
+        {
+          Priority: 0,
+          Name: 'allow-ip-set-rule',
+          Action: { Allow: {} },
+          Statement: {
+            IPSetReferenceStatement: {
+              Arn: 'arn:aws:wafv2:us-east-1:1111222233334444:global/ipset/ipv4-block-cf/1fef3860-8b6e-4201-8a56-6d8d49e93057',
+            },
+          },
+          VisibilityConfig: {
+            CloudWatchMetricsEnabled: true,
+            MetricName: 'AllowIpSetRule',
             SampledRequestsEnabled: true,
           },
         },

@@ -6,8 +6,7 @@ export interface WafGeoRestrictRuleGroupProps {
   readonly scope: Scope;
   readonly allowCountries: string[];
   readonly ipRateLimiting?: IpRateLimitingProperty;
-  //readonly rateLimitCount?: number;
-  //whitelist
+  readonly allowIpSetArn?: string;
 }
 
 export interface IpRateLimitingProperty {
@@ -104,13 +103,31 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
                 statement: {
                   rateBasedStatement: {
                     aggregateKeyType: 'IP',
-                    limit: props?.ipRateLimiting.count,
+                    limit: props.ipRateLimiting.count,
                   },
                 },
               };
               defaults.push(rule);
             }
           }
+        }
+        if (props.allowIpSetArn) {
+          const rule: waf.CfnRuleGroup.RuleProperty = {
+            priority: 0,
+            name: 'allow-ip-set-rule',
+            action: { allow: {} },
+            visibilityConfig: {
+              sampledRequestsEnabled: true,
+              cloudWatchMetricsEnabled: true,
+              metricName: 'AllowIpSetRule',
+            },
+            statement: {
+              ipSetReferenceStatement: {
+                arn: props.allowIpSetArn,
+              },
+            },
+          };
+          defaults.push(rule);
         }
         return defaults;
       })(),
