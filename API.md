@@ -49,7 +49,7 @@ new WafGeoRestrictRuleGroup(scope: Construct, id: string, props: WafGeoRestrictR
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Specifies whether this is for an Amazon CloudFront distribution or for a regional application. |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroup.Initializer.parameter.props">props</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps">WafGeoRestrictRuleGroupProps</a></code> | *No description.* |
 
@@ -58,6 +58,12 @@ new WafGeoRestrictRuleGroup(scope: Construct, id: string, props: WafGeoRestrictR
 ##### `scope`<sup>Required</sup> <a name="scope" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroup.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
+
+Specifies whether this is for an Amazon CloudFront distribution or for a regional application.
+
+A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AWS AppSync GraphQL API, or an Amazon Cognito user pool. Valid Values are `CLOUDFRONT` and `REGIONAL` .
+
+> For `CLOUDFRONT` , you must create your WAFv2 resources in the US East (N. Virginia) Region, `us-east-1` .
 
 ---
 
@@ -936,6 +942,7 @@ const wafGeoRestrictRuleGroupProps: WafGeoRestrictRuleGroupProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowCountries">allowCountries</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.scope">scope</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.Scope">Scope</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowIpSetArn">allowIpSetArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.ipRateLimiting">ipRateLimiting</a></code> | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.IpRateLimitingProperty">IpRateLimitingProperty</a></code> | *No description.* |
 | <code><a href="#@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.name">name</a></code> | <code>string</code> | *No description.* |
 
@@ -958,6 +965,16 @@ public readonly scope: Scope;
 ```
 
 - *Type:* <a href="#@gammarer/aws-waf-geo-restriction-rule-group.Scope">Scope</a>
+
+---
+
+##### `allowIpSetArn`<sup>Optional</sup> <a name="allowIpSetArn" id="@gammarer/aws-waf-geo-restriction-rule-group.WafGeoRestrictRuleGroupProps.property.allowIpSetArn"></a>
+
+```typescript
+public readonly allowIpSetArn: string;
+```
+
+- *Type:* string
 
 ---
 
