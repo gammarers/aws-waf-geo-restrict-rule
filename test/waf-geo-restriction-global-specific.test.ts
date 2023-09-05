@@ -39,7 +39,7 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
           Content: 'Sorry, You Are Not Allowed to Access This Service.',
           ContentType: 'TEXT_PLAIN',
         },
-        'ip-restrict': {
+        'ip-rate-restrict': {
           Content: 'Sorry, You Are Not Allowed to Access This Service.',
           ContentType: 'TEXT_PLAIN',
         },
@@ -98,8 +98,8 @@ describe('Web ACL Rule Group Global Scope specific testing', () => {
           Action: {
             Block: {
               CustomResponse: {
-                CustomResponseBodyKey: 'ip-restrict',
-                ResponseCode: 403,
+                CustomResponseBodyKey: 'ip-rate-restrict',
+                ResponseCode: 429,
               },
             },
           },

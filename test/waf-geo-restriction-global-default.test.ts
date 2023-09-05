@@ -34,7 +34,7 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
           Content: 'Sorry, You Are Not Allowed to Access This Service.',
           ContentType: 'TEXT_PLAIN',
         },
-        'ip-restrict': {
+        'ip-rate-restrict': {
           Content: 'Sorry, You Are Not Allowed to Access This Service.',
           ContentType: 'TEXT_PLAIN',
         },

@@ -90,8 +90,8 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
                 action: {
                   block: {
                     CustomResponse: {
-                      CustomResponseBodyKey: 'ip-restrict',
-                      ResponseCode: 403,
+                      CustomResponseBodyKey: 'ip-rate-restrict',
+                      ResponseCode: 429,
                     },
                   },
                 },
@@ -136,7 +136,7 @@ export class WafGeoRestrictRuleGroup extends waf.CfnRuleGroup {
           contentType: 'TEXT_PLAIN',
           content: 'Sorry, You Are Not Allowed to Access This Service.',
         },
-        ['ip-restrict']: {
+        ['ip-rate-restrict']: {
           contentType: 'TEXT_PLAIN',
           content: 'Sorry, You Are Not Allowed to Access This Service.',
         },
