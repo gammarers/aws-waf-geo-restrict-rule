@@ -18,7 +18,7 @@ Object {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
-          "ip-restrict": Object {
+          "ip-rate-restrict": Object {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },

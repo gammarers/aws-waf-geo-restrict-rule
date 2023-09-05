@@ -18,7 +18,7 @@ Object {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
-          "ip-restrict": Object {
+          "ip-rate-restrict": Object {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
@@ -80,8 +80,8 @@ Object {
             "Action": Object {
               "Block": Object {
                 "CustomResponse": Object {
-                  "CustomResponseBodyKey": "ip-restrict",
-                  "ResponseCode": 403,
+                  "CustomResponseBodyKey": "ip-rate-restrict",
+                  "ResponseCode": 429,
                 },
               },
             },
