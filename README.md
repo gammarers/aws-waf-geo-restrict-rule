@@ -25,6 +25,22 @@ npm install @gammarer/aws-waf-geo-restriction-rule-group
 # or
 yarn add @gammarer/aws-waf-geo-restriction-rule-group
 ```
+### Python
+
+```shell
+pip install gammarer.aws-waf-geo-restriction-rule-group
+```
+
+### Java
+
+Add the following to pom.xml:
+
+```xml
+<dependency>
+  <groupId>com.gammarer</groupId>
+  <artifactId>aws-waf-geo-restriction-rule-group</artifactId>
+</dependency>
+```
 
 ## Example
 
