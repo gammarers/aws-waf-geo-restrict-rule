@@ -23,5 +23,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['yicr'],
   },
+  publishToPypi: {
+    distName: 'gammarer.aws-waf-geo-restriction-rule-group',
+    module: 'gammarer.aws_waf_geo_restriction_rule_group',
+  },
 });
 project.synth();
