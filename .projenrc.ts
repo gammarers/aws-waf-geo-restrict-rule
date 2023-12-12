@@ -10,14 +10,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: 'This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2',
   majorVersion: 1,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/yicr/aws-waf-geo-restriction-rule-group.git',
+  repositoryUrl: 'https://github.com/gammarer/aws-waf-geo-restriction-rule-group.git',
   npmAccess: javascript.NpmAccess.PUBLIC,
   minNodeVersion: '18.0.0',
   workflowNodeVersion: '18.17.1',
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
-      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 19 * * *']),
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 19 * * 1']), // every monday (JST/THU:02:00)
     },
   },
   autoApproveOptions: {
