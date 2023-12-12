@@ -33,5 +33,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     mavenArtifactId: 'aws-waf-geo-restriction-rule-group',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
   },
+  publishToNuget: {
+    dotNetNamespace: 'Gammarer.CDK.AWS',
+    packageId: 'Gammarer.CDK.AWS.WafGeoRestrictionRuleGroup',
+  },
 });
 project.synth();
