@@ -8,6 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@gammarer/aws-waf-geo-restriction-rule-group',
   description: 'This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2',
+  majorVersion: 1,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/yicr/aws-waf-geo-restriction-rule-group.git',
   npmAccess: javascript.NpmAccess.PUBLIC,
@@ -32,6 +33,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
     javaPackage: 'com.gammarer.cdk.aws.waf_geo_restriction_rule_group',
     mavenArtifactId: 'aws-waf-geo-restriction-rule-group',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
+  },
+  publishToNuget: {
+    dotNetNamespace: 'Gammarer.CDK.AWS',
+    packageId: 'Gammarer.CDK.AWS.WafGeoRestrictionRuleGroup',
   },
 });
 project.synth();
