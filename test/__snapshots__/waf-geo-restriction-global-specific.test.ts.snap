@@ -1,57 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Web ACL Rule Group Global Scope specific testing Should match snapshot 1`] = `
-Object {
-  "Parameters": Object {
-    "BootstrapVersion": Object {
+{
+  "Parameters": {
+    "BootstrapVersion": {
       "Default": "/cdk-bootstrap/hnb659fds/version",
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
-  "Resources": Object {
-    "WafGeoRestrictRuleGroup": Object {
-      "Properties": Object {
+  "Resources": {
+    "WafGeoRestrictRuleGroup": {
+      "Properties": {
         "Capacity": 10,
-        "CustomResponseBodies": Object {
-          "geo-restrict": Object {
+        "CustomResponseBodies": {
+          "geo-restrict": {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
-          "ip-rate-restrict": Object {
+          "ip-rate-restrict": {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
-          "sample-restrict": Object {
+          "sample-restrict": {
             "Content": "Sorry, You Are Not Allowed to Access This Service.",
             "ContentType": "TEXT_PLAIN",
           },
         },
         "Description": "geo restrict rule group",
-        "Rules": Array [
-          Object {
-            "Action": Object {
-              "Allow": Object {},
+        "Rules": [
+          {
+            "Action": {
+              "Allow": {},
             },
             "Name": "allow-geo-rule",
             "Priority": 4,
-            "Statement": Object {
-              "GeoMatchStatement": Object {
-                "CountryCodes": Array [
+            "Statement": {
+              "GeoMatchStatement": {
+                "CountryCodes": [
                   "JP",
                 ],
               },
             },
-            "VisibilityConfig": Object {
+            "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
               "MetricName": "AllowGeoRule",
               "SampledRequestsEnabled": true,
             },
           },
-          Object {
-            "Action": Object {
-              "Block": Object {
-                "CustomResponse": Object {
+          {
+            "Action": {
+              "Block": {
+                "CustomResponse": {
                   "CustomResponseBodyKey": "geo-restrict",
                   "ResponseCode": 403,
                 },
@@ -59,27 +59,27 @@ Object {
             },
             "Name": "deny-geo-rule",
             "Priority": 5,
-            "Statement": Object {
-              "NotStatement": Object {
-                "Statement": Object {
-                  "GeoMatchStatement": Object {
-                    "CountryCodes": Array [
+            "Statement": {
+              "NotStatement": {
+                "Statement": {
+                  "GeoMatchStatement": {
+                    "CountryCodes": [
                       "JP",
                     ],
                   },
                 },
               },
             },
-            "VisibilityConfig": Object {
+            "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
               "MetricName": "DenyGeoRule",
               "SampledRequestsEnabled": true,
             },
           },
-          Object {
-            "Action": Object {
-              "Block": Object {
-                "CustomResponse": Object {
+          {
+            "Action": {
+              "Block": {
+                "CustomResponse": {
                   "CustomResponseBodyKey": "ip-rate-restrict",
                   "ResponseCode": 429,
                 },
@@ -87,30 +87,30 @@ Object {
             },
             "Name": "ip-rate-limiting-rule",
             "Priority": 2,
-            "Statement": Object {
-              "RateBasedStatement": Object {
+            "Statement": {
+              "RateBasedStatement": {
                 "AggregateKeyType": "IP",
                 "Limit": 1000,
               },
             },
-            "VisibilityConfig": Object {
+            "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
               "MetricName": "DenyIpLimitingRule",
               "SampledRequestsEnabled": true,
             },
           },
-          Object {
-            "Action": Object {
-              "Allow": Object {},
+          {
+            "Action": {
+              "Allow": {},
             },
             "Name": "allow-ip-set-rule",
             "Priority": 0,
-            "Statement": Object {
-              "IPSetReferenceStatement": Object {
+            "Statement": {
+              "IPSetReferenceStatement": {
                 "Arn": "arn:aws:wafv2:us-east-1:1111222233334444:global/ipset/ipv4-block-cf/1fef3860-8b6e-4201-8a56-6d8d49e93057",
               },
             },
-            "VisibilityConfig": Object {
+            "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
               "MetricName": "AllowIpSetRule",
               "SampledRequestsEnabled": true,
@@ -118,7 +118,7 @@ Object {
           },
         ],
         "Scope": "CLOUDFRONT",
-        "VisibilityConfig": Object {
+        "VisibilityConfig": {
           "CloudWatchMetricsEnabled": true,
           "MetricName": "GeoRestrictRule",
           "SampledRequestsEnabled": true,
@@ -127,22 +127,22 @@ Object {
       "Type": "AWS::WAFv2::RuleGroup",
     },
   },
-  "Rules": Object {
-    "CheckBootstrapVersion": Object {
-      "Assertions": Array [
-        Object {
-          "Assert": Object {
-            "Fn::Not": Array [
-              Object {
-                "Fn::Contains": Array [
-                  Array [
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
                     "1",
                     "2",
                     "3",
                     "4",
                     "5",
                   ],
-                  Object {
+                  {
                     "Ref": "BootstrapVersion",
                   },
                 ],
