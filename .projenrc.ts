@@ -9,6 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@gammarers/aws-waf-geo-restriction-rule-group',
   description: 'This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2',
+  keywords: ['aws', 'cdk', 'aws-cdk', 'waf', 'geo', 'restriction'],
   majorVersion: 1,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/gammarers/aws-waf-geo-restriction-rule-group.git',

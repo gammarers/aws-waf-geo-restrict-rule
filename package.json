@@ -64,7 +64,12 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
-    "cdk"
+    "aws",
+    "aws-cdk",
+    "cdk",
+    "geo",
+    "restriction",
+    "waf"
   ],
   "engines": {
     "node": ">= 18.0.0"
