@@ -127,8 +127,8 @@
         "module": "gammarers.aws_waf_geo_restriction_rule_group"
       },
       "dotnet": {
-        "namespace": "Gammarer.CDK.AWS",
-        "packageId": "Gammarer.CDK.AWS.WafGeoRestrictionRuleGroup"
+        "namespace": "Gammarers.CDK.AWS",
+        "packageId": "Gammarers.CDK.AWS.WafGeoRestrictionRuleGroup"
       }
     },
     "tsc": {

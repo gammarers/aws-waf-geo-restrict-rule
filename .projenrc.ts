@@ -30,8 +30,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'gammarers.aws_waf_geo_restriction_rule_group',
   },
   publishToNuget: {
-    dotNetNamespace: 'Gammarer.CDK.AWS',
-    packageId: 'Gammarer.CDK.AWS.WafGeoRestrictionRuleGroup',
+    dotNetNamespace: 'Gammarers.CDK.AWS',
+    packageId: 'Gammarers.CDK.AWS.WafGeoRestrictionRuleGroup',
   },
 });
 project.synth();
