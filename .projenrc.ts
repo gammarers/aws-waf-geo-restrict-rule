@@ -15,7 +15,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/gammarers/aws-waf-geo-restriction-rule-group.git',
   npmAccess: javascript.NpmAccess.PUBLIC,
   minNodeVersion: '18.0.0',
-  workflowNodeVersion: '20.11.0',
+  workflowNodeVersion: '22.4.x',
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
