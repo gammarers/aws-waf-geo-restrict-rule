@@ -51,7 +51,7 @@ new wafv2.CfnWebACL(stack, 'WebACL', {
     sampledRequestsEnabled: true,
   },
   rules: [
-    geoRestrictRule.alowRule({
+    geoRestrictRule.allowRule({
       priority: 1,
     }),
     geoRestrictRule.blockRule({
