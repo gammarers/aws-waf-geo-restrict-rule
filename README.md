@@ -3,19 +3,12 @@
 [![GitHub](https://img.shields.io/github/license/gammarers/aws-waf-geo-restrict-rule?style=flat-square)](https://github.com/gammarers/aws-waf-geo-restrict-rule/blob/main/LICENSE)
 [![npm (scoped)](https://img.shields.io/npm/v/@gammarers/aws-waf-geo-restrict-rule?style=flat-square)](https://www.npmjs.com/package/@gammarers/aws-waf-geo-restrict-rule)
 [![PyPI](https://img.shields.io/pypi/v/gammarers.aws-waf-geo-restrict-rule?style=flat-square)](https://pypi.org/project/gammarers.aws-waf-geo-restrict-rule/)
-[![Nuget](https://img.shields.io/nuget/v/Gammarers.CDK.AWS.WafGeoRestrictRule?style=flat-square)](https://www.nuget.org/packages/Gammarers.CDK.AWS.WafGeoRestrictRule/)
 [![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/gammarers/aws-waf-geo-restrict-rule/release.yml?branch=main&label=release&style=flat-square)](https://github.com/gammarers/aws-waf-geo-restrict-rule/actions/workflows/release.yml)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gammarers/aws-waf-geo-restrict-rule?sort=semver&style=flat-square)](https://github.com/gammarers/aws-waf-geo-restrict-rule/releases)
 
 [![View on Construct Hub](https://constructs.dev/badge?package=@gammarers/aws-waf-geo-restrict-rule)](https://constructs.dev/packages/@gammarers/aws-waf-geo-restrict-rule)
 
 This is an AWS CDK WAF Geo Restrict Rule on WAF V2
-
-## Resources
-
-This construct creating resource list.
-
-- WAF V2 RuleGroup
 
 ## Install
 
