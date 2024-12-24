@@ -109,18 +109,18 @@ new WAFGeoRestrictRule(props: WAFGeoRestrictRuleProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.alowRule">alowRule</a></code> | *No description.* |
+| <code><a href="#@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.allowRule">allowRule</a></code> | *No description.* |
 | <code><a href="#@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.blockRule">blockRule</a></code> | *No description.* |
 
 ---
 
-##### `alowRule` <a name="alowRule" id="@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.alowRule"></a>
+##### `allowRule` <a name="allowRule" id="@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.allowRule"></a>
 
 ```typescript
-public alowRule(config: RuleConfig): RuleProperty
+public allowRule(config: RuleConfig): RuleProperty
 ```
 
-###### `config`<sup>Required</sup> <a name="config" id="@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.alowRule.parameter.config"></a>
+###### `config`<sup>Required</sup> <a name="config" id="@gammarers/aws-waf-geo-restrict-rule.WAFGeoRestrictRule.allowRule.parameter.config"></a>
 
 - *Type:* <a href="#@gammarers/aws-waf-geo-restrict-rule.RuleConfig">RuleConfig</a>
 

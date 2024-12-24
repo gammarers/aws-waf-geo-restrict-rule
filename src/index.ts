@@ -14,7 +14,7 @@ export class WAFGeoRestrictRule {
 
   constructor(private props: WAFGeoRestrictRuleProps) {}
 
-  alowRule(config: RuleConfig): wafv2.CfnWebACL.RuleProperty {
+  allowRule(config: RuleConfig): wafv2.CfnWebACL.RuleProperty {
     return {
       name: config.ruleName || 'allow-geo-rule',
       priority: config.priority,

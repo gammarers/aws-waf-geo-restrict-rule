@@ -22,7 +22,7 @@ describe('Web ACL Rule Group Global Scope default testing', () => {
       sampledRequestsEnabled: true,
     },
     rules: [
-      geoRestrictRule.alowRule({
+      geoRestrictRule.allowRule({
         priority: 1,
       }),
       geoRestrictRule.blockRule({
