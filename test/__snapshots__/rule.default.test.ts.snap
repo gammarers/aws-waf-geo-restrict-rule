@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Web ACL Rule Group Regional Scope default testing Should match snapshot: regional 1`] = `
+exports[`Web ACL Rule Group Global Scope default testing Should match snapshot 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -10,32 +10,19 @@ exports[`Web ACL Rule Group Regional Scope default testing Should match snapshot
     },
   },
   "Resources": {
-    "WafGeoRestrictRuleGroup": {
+    "WebACL": {
       "Properties": {
-        "Capacity": 10,
-        "CustomResponseBodies": {
-          "geo-restrict": {
-            "Content": "Sorry, You Are Not Allowed to Access This Service.",
-            "ContentType": "TEXT_PLAIN",
-          },
-          "ip-rate-restrict": {
-            "Content": "Sorry, You Are Not Allowed to Access This Service.",
-            "ContentType": "TEXT_PLAIN",
-          },
-          "sample-restrict": {
-            "Content": "Sorry, You Are Not Allowed to Access This Service.",
-            "ContentType": "TEXT_PLAIN",
-          },
+        "DefaultAction": {
+          "Allow": {},
         },
-        "Description": "geo restrict rule group",
-        "Name": "example-waf-geo-restrict-rule-group",
+        "Name": "WebAclWithCustomRules",
         "Rules": [
           {
             "Action": {
               "Allow": {},
             },
             "Name": "allow-geo-rule",
-            "Priority": 4,
+            "Priority": 1,
             "Statement": {
               "GeoMatchStatement": {
                 "CountryCodes": [
@@ -45,21 +32,16 @@ exports[`Web ACL Rule Group Regional Scope default testing Should match snapshot
             },
             "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
-              "MetricName": "AllowGeoRule",
+              "MetricName": "AllowGeoMetric",
               "SampledRequestsEnabled": true,
             },
           },
           {
             "Action": {
-              "Block": {
-                "CustomResponse": {
-                  "CustomResponseBodyKey": "geo-restrict",
-                  "ResponseCode": 403,
-                },
-              },
+              "Block": {},
             },
-            "Name": "deny-geo-rule",
-            "Priority": 5,
+            "Name": "block-geo-rule",
+            "Priority": 2,
             "Statement": {
               "NotStatement": {
                 "Statement": {
@@ -73,19 +55,19 @@ exports[`Web ACL Rule Group Regional Scope default testing Should match snapshot
             },
             "VisibilityConfig": {
               "CloudWatchMetricsEnabled": true,
-              "MetricName": "DenyGeoRule",
+              "MetricName": "BlockGeoMetric",
               "SampledRequestsEnabled": true,
             },
           },
         ],
-        "Scope": "REGIONAL",
+        "Scope": "CLOUD_FRONT",
         "VisibilityConfig": {
           "CloudWatchMetricsEnabled": true,
-          "MetricName": "GeoRestrictRule",
+          "MetricName": "WebAclMetric",
           "SampledRequestsEnabled": true,
         },
       },
-      "Type": "AWS::WAFv2::RuleGroup",
+      "Type": "AWS::WAFv2::WebACL",
     },
   },
   "Rules": {
