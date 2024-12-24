@@ -1,6 +1,6 @@
 {
   "name": "@gammarers/aws-waf-geo-restrict-rule",
-  "description": "This is an AWS CDK Construct for Geo Restric Rule on WAF V2",
+  "description": "This is an AWS CDK Geo Restric Rule on WAF V2",
   "repository": {
     "type": "git",
     "url": "https://github.com/gammarers/aws-waf-geo-restrict-rule.git"

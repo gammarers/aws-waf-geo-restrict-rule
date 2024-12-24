@@ -7,9 +7,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jsiiVersion: '5.4.x',
   defaultReleaseBranch: 'main',
   name: '@gammarers/aws-waf-geo-restrict-rule',
-  description: 'This is an AWS CDK Construct for Geo Restric Rule on WAF V2',
+  description: 'This is an AWS CDK Geo Restric Rule on WAF V2',
   keywords: ['aws', 'cdk', 'aws-cdk', 'waf', 'geo', 'restrict'],
-  majorVersion: 1,
+  majorVersion: 2,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/gammarers/aws-waf-geo-restrict-rule.git',
   npmAccess: javascript.NpmAccess.PUBLIC,
@@ -18,7 +18,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
-      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 19 * * 1']), // every monday (JST/THU:02:00)
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(['8 19 * * 1']),
     },
   },
   autoApproveOptions: {
