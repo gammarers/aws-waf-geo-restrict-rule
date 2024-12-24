@@ -1,9 +1,9 @@
 {
-  "name": "@gammarers/aws-waf-geo-restriction-rule-group",
-  "description": "This is an AWS CDK Construct for Geo Restriction Rule Group on WAF V2",
+  "name": "@gammarers/aws-waf-geo-restrict-rule",
+  "description": "This is an AWS CDK Construct for Geo Restric Rule on WAF V2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gammarers/aws-waf-geo-restriction-rule-group.git"
+    "url": "https://github.com/gammarers/aws-waf-geo-restrict-rule.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -17,7 +17,6 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
@@ -69,7 +68,7 @@
     "aws-cdk",
     "cdk",
     "geo",
-    "restriction",
+    "restrict",
     "waf"
   ],
   "engines": {
@@ -132,12 +131,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "gammarers.aws-waf-geo-restriction-rule-group",
-        "module": "gammarers.aws_waf_geo_restriction_rule_group"
-      },
-      "dotnet": {
-        "namespace": "Gammarers.CDK.AWS",
-        "packageId": "Gammarers.CDK.AWS.WafGeoRestrictionRuleGroup"
+        "distName": "gammarers.aws-waf-geo-restrict-rule",
+        "module": "gammarers.aws_waf_geo_restrict_rule"
       }
     },
     "tsc": {
